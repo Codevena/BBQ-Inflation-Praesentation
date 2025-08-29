@@ -216,28 +216,46 @@ export const useTypewriter = (
 ) => {
   const [displayText, setDisplayText] = useState('');
   const [isComplete, setIsComplete] = useState(false);
+  const [isMounted, setIsMounted] = useState(false);
+  const hasStartedRef = useRef(false);
+  const timeoutRef = useRef<NodeJS.Timeout | null>(null);
+  const intervalRef = useRef<NodeJS.Timeout | null>(null);
+
+  // Warte auf Client-Side Hydration
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
 
   useEffect(() => {
-    setDisplayText('');
-    setIsComplete(false);
+    // Nur auf Client-Side und nur einmal ausführen
+    if (!isMounted || hasStartedRef.current) return;
 
-    const timeout = setTimeout(() => {
+    hasStartedRef.current = true;
+
+    timeoutRef.current = setTimeout(() => {
       let index = 0;
-      const interval = setInterval(() => {
+      intervalRef.current = setInterval(() => {
         if (index <= text.length) {
           setDisplayText(text.slice(0, index));
           index++;
         } else {
           setIsComplete(true);
-          clearInterval(interval);
+          if (intervalRef.current) {
+            clearInterval(intervalRef.current);
+          }
         }
       }, speed);
-
-      return () => clearInterval(interval);
     }, startDelay);
 
-    return () => clearTimeout(timeout);
-  }, [text, speed, startDelay]);
+    return () => {
+      if (timeoutRef.current) {
+        clearTimeout(timeoutRef.current);
+      }
+      if (intervalRef.current) {
+        clearInterval(intervalRef.current);
+      }
+    };
+  }, [isMounted, text, speed, startDelay]);
 
   return { displayText, isComplete };
 };
