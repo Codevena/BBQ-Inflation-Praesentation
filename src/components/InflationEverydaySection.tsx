@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { DollarSign, Home, TrendingUp, CreditCard, Target, BarChart3, Shield, TrendingUp as TrendingUpIcon } from 'lucide-react';
 import TimeTravelSimulator from './TimeTravelSimulator';
 import SalaryInflationTracker from './SalaryInflationTracker';
 
@@ -55,25 +56,25 @@ const inflationProtectionAssets = [
 
 const personalFinanceTips = [
   {
-    icon: '💰',
+    icon: DollarSign,
     title: 'Schulden bei Inflation',
     tip: 'Feste Zinsen werden durch Inflation "weginflationiert"',
     example: '100.000€ Kredit bei 3% Zinsen + 5% Inflation = real nur 2% Kosten'
   },
   {
-    icon: '🏠',
+    icon: Home,
     title: 'Immobilienkauf',
     tip: 'Sachwerte schützen vor Inflation, aber Zinsen beachten',
     example: 'Haus für 500.000€ heute kann in 10 Jahren 650.000€ wert sein'
   },
   {
-    icon: '📈',
+    icon: TrendingUp,
     title: 'Aktien-Sparplan',
     tip: 'Regelmäßig investieren glättet Schwankungen',
     example: '200€/Monat in ETF über 20 Jahre trotz Inflation'
   },
   {
-    icon: '💳',
+    icon: CreditCard,
     title: 'Konsumverhalten',
     tip: 'Große Anschaffungen vor Preiserhöhungen',
     example: 'Auto oder Möbel kaufen, bevor Preise weiter steigen'
@@ -359,7 +360,9 @@ export default function InflationEverydaySection() {
             {personalFinanceTips.map((tip, index) => (
               <div key={index} className="bg-white/5 backdrop-blur-sm rounded-xl p-6 border border-white/10">
                 <div className="flex items-start gap-4">
-                  <div className="text-3xl">{tip.icon}</div>
+                  <div className="text-emerald-400">
+                    <tip.icon size={32} />
+                  </div>
                   <div className="flex-1">
                     <h4 className="text-xl font-bold text-white mb-3">{tip.title}</h4>
                     <p className="text-emerald-200 mb-4">{tip.tip}</p>
@@ -378,22 +381,23 @@ export default function InflationEverydaySection() {
         {/* Bottom CTA */}
         <div className="mt-16 bg-gradient-to-r from-emerald-500/20 to-teal-500/20 backdrop-blur-sm rounded-2xl p-8 border border-emerald-400/30">
           <div className="text-center">
-            <h3 className="text-2xl font-bold text-white mb-4">
-              🎯 Dein Inflations-Aktionsplan
+            <h3 className="text-2xl font-bold text-white mb-4 flex items-center justify-center gap-3">
+              <Target size={28} className="text-emerald-400" />
+              Dein Inflations-Aktionsplan
             </h3>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               <div className="text-center">
-                <div className="text-3xl mb-2">📊</div>
+                <BarChart3 size={48} className="text-emerald-400 mx-auto mb-2" />
                 <h4 className="font-bold text-white mb-2">1. Analysieren</h4>
                 <p className="text-emerald-200 text-sm">Berechne deine persönliche Inflationsbetroffenheit</p>
               </div>
               <div className="text-center">
-                <div className="text-3xl mb-2">🛡️</div>
+                <Shield size={48} className="text-emerald-400 mx-auto mb-2" />
                 <h4 className="font-bold text-white mb-2">2. Schützen</h4>
                 <p className="text-emerald-200 text-sm">Diversifiziere in inflationsgeschützte Anlagen</p>
               </div>
               <div className="text-center">
-                <div className="text-3xl mb-2">📈</div>
+                <TrendingUpIcon size={48} className="text-emerald-400 mx-auto mb-2" />
                 <h4 className="font-bold text-white mb-2">3. Optimieren</h4>
                 <p className="text-emerald-200 text-sm">Passe deine Strategie regelmäßig an</p>
               </div>
