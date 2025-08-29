@@ -5,6 +5,7 @@ import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { Chart as ChartJS, CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend, Filler } from 'chart.js';
 import { Line } from 'react-chartjs-2';
+import { BarChart3, Lightbulb } from 'lucide-react';
 import { inflationRatesGermany, priceExamples, realWageData, inflationByCategory } from '@/data/inflationData';
 
 ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend, Filler);
@@ -280,8 +281,9 @@ export default function EffectsSection() {
 
             {/* Reallohn-Entwicklung */}
             <div className="bg-gradient-to-r from-purple-500/20 to-blue-500/20 backdrop-blur-sm rounded-xl p-6 border border-purple-500/30 mb-6">
-              <h4 className="text-lg font-semibold text-white mb-4">
-                📊 Reallohn-Entwicklung Deutschland
+              <h4 className="text-lg font-semibold text-white mb-4 flex items-center gap-2">
+                <BarChart3 size={20} className="text-purple-400" />
+                Reallohn-Entwicklung Deutschland
               </h4>
               <div className="grid grid-cols-2 gap-4">
                 {realWageData.slice(-3).map((data, index) => (
@@ -301,8 +303,9 @@ export default function EffectsSection() {
 
             {/* Summary Card */}
             <div className="bg-gradient-to-r from-red-500/20 to-orange-500/20 backdrop-blur-sm rounded-xl p-6 border border-red-500/30">
-              <h4 className="text-lg font-semibold text-white mb-3">
-                💡 Kaufkraftverlust
+              <h4 className="text-lg font-semibold text-white mb-3 flex items-center gap-2">
+                <Lightbulb size={20} className="text-yellow-400" />
+                Kaufkraftverlust
               </h4>
               <p className="text-blue-200 text-sm leading-relaxed">
                 Bei {inflationRate}% Inflation verlieren €1.000 in 4 Jahren etwa{' '}

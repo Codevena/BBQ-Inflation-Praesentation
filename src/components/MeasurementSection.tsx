@@ -3,6 +3,7 @@
 import { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { BarChart3, ShoppingCart, Target, TrendingUp, Lightbulb, Flag } from 'lucide-react';
 import { inflationByCategory } from '@/data/inflationData';
 
 if (typeof window !== 'undefined') {
@@ -81,8 +82,9 @@ export default function MeasurementSection() {
           {/* Left Column - Explanation */}
           <div className="space-y-8">
             <div className="bg-white/5 backdrop-blur-sm rounded-2xl p-8 border border-white/10">
-              <h3 className="text-2xl font-bold text-white mb-6">
-                📊 Verbraucherpreisindex (VPI)
+              <h3 className="text-2xl font-bold text-white mb-6 flex items-center gap-3">
+                <BarChart3 size={28} className="text-cyan-400" />
+                Verbraucherpreisindex (VPI)
               </h3>
               <div className="space-y-4 text-cyan-200">
                 <p className="leading-relaxed">

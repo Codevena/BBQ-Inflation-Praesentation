@@ -31,16 +31,18 @@ export default function Home() {
 
   return (
     <main className="relative">
-      {/* Presentation Button */}
-      <div className="fixed top-4 right-4 z-50">
-        <a
-          href="/presentation"
-          className="bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-700 hover:to-cyan-700 text-white px-6 py-3 rounded-lg font-semibold shadow-lg backdrop-blur-sm border border-white/20 transition-all duration-300 hover:scale-105 flex items-center gap-2"
-        >
-          <BarChart3 size={20} />
-          Zur Präsentation
-        </a>
-      </div>
+      {/* Fixed Header with Presentation Button */}
+      <header className="fixed top-0 left-0 right-0 z-50 bg-slate-900/80 backdrop-blur-md border-b border-white/10">
+        <div className="container mx-auto px-6 py-4 flex justify-end">
+          <a
+            href="/presentation"
+            className="bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-700 hover:to-cyan-700 text-white px-6 py-3 rounded-lg font-semibold shadow-lg border border-white/20 transition-all duration-300 hover:scale-105 flex items-center gap-2"
+          >
+            <BarChart3 size={20} />
+            Zur Präsentation
+          </a>
+        </div>
+      </header>
 
       {/* Navigation */}
       <Navigation
@@ -49,8 +51,9 @@ export default function Home() {
         sections={sections}
       />
 
-      {/* Sections */}
-      <IntroSection />
+      {/* Sections - with top padding for fixed header */}
+      <div className="pt-20">
+        <IntroSection />
       <CausesSection />
       <EffectsSection />
       <MeasurementSection />
@@ -60,6 +63,7 @@ export default function Home() {
       <HistorySection />
       <GlossarySection />
       <QuizSection />
+      </div>
 
       {/* Copyright */}
       <div className="fixed bottom-4 left-4 bg-black/50 backdrop-blur-sm rounded-lg p-3 text-sm z-50">
