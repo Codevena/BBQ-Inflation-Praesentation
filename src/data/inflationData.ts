@@ -84,20 +84,20 @@ export const historicalEvents: HistoricalEvent[] = [
     impact: "Preise verdoppelten sich alle 15 Stunden. 100 Quintillionen Pengő-Scheine"
   },
   {
-    year: 2008,
-    country: "Zimbabwe",
-    rate: 89700000000, // 89,7 Milliarden % - offiziell gemessen
-    title: "Zimbabwe-Dollar Hyperinflation",
-    description: "Landreformen, politische Krise und Wirtschaftsmismanagement",
-    impact: "100-Billionen-Dollar-Scheine. US-Dollar wurde de facto Währung"
-  },
-  {
     year: 1979,
     country: "USA",
     rate: 13.3, // Korrigiert: 1979, nicht 1980
     title: "Stagflation der 1970er",
     description: "Ölkrisen 1973 und 1979 plus expansive Geldpolitik",
     impact: "Fed-Chef Volcker hob Zinsen auf über 20% an"
+  },
+  {
+    year: 2008,
+    country: "Zimbabwe",
+    rate: 89700000000, // 89,7 Milliarden % - offiziell gemessen
+    title: "Zimbabwe-Dollar Hyperinflation",
+    description: "Landreformen, politische Krise und Wirtschaftsmismanagement",
+    impact: "100-Billionen-Dollar-Scheine. US-Dollar wurde de facto Währung"
   },
   {
     year: 1989,
@@ -193,6 +193,42 @@ export const quizQuestions = [
     ],
     correct: 2,
     explanation: "Wenn die Zinsen auf Sparkonten niedriger sind als die Inflationsrate, verlieren Ersparnisse real an Kaufkraft. Bei 3% Inflation und 1% Zinsen verliert man real 2% pro Jahr."
+  },
+  {
+    id: 8,
+    question: "Was passiert, wenn die EZB den Leitzins erhöht?",
+    options: [
+      "Kredite werden billiger",
+      "Die Inflation steigt automatisch",
+      "Kredite werden teurer und die Wirtschaft wird gebremst",
+      "Sparen wird unattraktiver"
+    ],
+    correct: 2,
+    explanation: "Höhere Leitzinsen führen zu teureren Krediten, weniger Investitionen und Konsum, was die Inflation dämpft."
+  },
+  {
+    id: 9,
+    question: "Welche Anlageform bietet den besten Inflationsschutz?",
+    options: [
+      "Sparbuch mit 0,1% Zinsen",
+      "Diversifiziertes Portfolio mit Aktien und Immobilien",
+      "Bargeld unter der Matratze",
+      "Nur Gold kaufen"
+    ],
+    correct: 1,
+    explanation: "Ein diversifiziertes Portfolio aus verschiedenen Anlageklassen bietet den besten Schutz vor Inflation, da verschiedene Assets unterschiedlich reagieren."
+  },
+  {
+    id: 10,
+    question: "Was ist der Unterschied zwischen nominalen und realen Zinsen?",
+    options: [
+      "Es gibt keinen Unterschied",
+      "Nominale Zinsen sind immer höher",
+      "Reale Zinsen = Nominale Zinsen minus Inflation",
+      "Reale Zinsen sind nur für Banken relevant"
+    ],
+    correct: 2,
+    explanation: "Reale Zinsen zeigen die tatsächliche Kaufkraftentwicklung. Bei 3% Nominalzins und 2% Inflation beträgt der Realzins nur 1%."
   }
 ];
 
@@ -252,4 +288,84 @@ export const realWageData = [
   { year: 2022, nominalGrowth: 2.6, realGrowth: -4.3 },
   { year: 2023, nominalGrowth: 4.1, realGrowth: -1.8 },
   { year: 2024, nominalGrowth: 3.8, realGrowth: 1.6 }
+];
+
+// Internationale Inflationsdaten für globale Perspektive
+export const globalInflationData = [
+  { country: 'Deutschland', rate2024: 2.2, rate2022: 6.9, flag: '🇩🇪' },
+  { country: 'USA', rate2024: 3.1, rate2022: 8.0, flag: '🇺🇸' },
+  { country: 'Eurozone', rate2024: 2.4, rate2022: 8.6, flag: '🇪🇺' },
+  { country: 'Großbritannien', rate2024: 2.0, rate2022: 9.0, flag: '🇬🇧' },
+  { country: 'Japan', rate2024: 2.8, rate2022: 2.5, flag: '🇯🇵' },
+  { country: 'China', rate2024: 0.2, rate2022: 2.0, flag: '🇨🇳' },
+  { country: 'Türkei', rate2024: 48.6, rate2022: 85.5, flag: '🇹🇷' },
+  { country: 'Argentinien', rate2024: 211.4, rate2022: 72.4, flag: '🇦🇷' }
+];
+
+// Erweiterte Finanz-Tipps für verschiedene Lebenssituationen
+export const lifeSituationTips = [
+  {
+    situation: 'Student/Azubi',
+    icon: '🎓',
+    tips: [
+      'Früh mit ETF-Sparplan beginnen (25-50€/Monat)',
+      'Inflationsgeschützte Staatsanleihen für Notgroschen',
+      'Ausbildungskosten vor Preiserhöhungen planen'
+    ],
+    priority: 'Langfristiger Vermögensaufbau'
+  },
+  {
+    situation: 'Berufseinsteiger',
+    icon: '💼',
+    tips: [
+      'Gehaltsverhandlungen mit Inflationsausgleich',
+      'Diversifiziertes Portfolio aufbauen',
+      'Immobilienkauf vs. Miete durchrechnen'
+    ],
+    priority: 'Inflationsschutz etablieren'
+  },
+  {
+    situation: 'Familie',
+    icon: '👨‍👩‍👧‍👦',
+    tips: [
+      'Bildungskosten für Kinder einkalkulieren',
+      'Immobilie als Inflationsschutz nutzen',
+      'Lebensversicherung inflationsindexiert wählen'
+    ],
+    priority: 'Langfristige Sicherheit'
+  },
+  {
+    situation: 'Rentner',
+    icon: '👴',
+    tips: [
+      'Teilweise in Aktien investiert bleiben',
+      'Inflationsgeschützte Renten wählen',
+      'Ausgaben regelmäßig an Inflation anpassen'
+    ],
+    priority: 'Kaufkraft erhalten'
+  }
+];
+
+// Inflations-Mythen und Fakten
+export const inflationMythsFacts = [
+  {
+    myth: 'Inflation ist immer schlecht',
+    fact: 'Moderate Inflation (2%) zeigt gesunde Wirtschaft',
+    explanation: 'Leichte Inflation motiviert Investitionen und Konsum'
+  },
+  {
+    myth: 'Deflation ist besser als Inflation',
+    fact: 'Deflation kann zu Wirtschaftsstillstand führen',
+    explanation: 'Fallende Preise → Konsumverzicht → Rezession'
+  },
+  {
+    myth: 'Goldkauf schützt immer vor Inflation',
+    fact: 'Gold schwankt stark und bringt keine Zinsen',
+    explanation: 'Aktien und Immobilien oft besserer Inflationsschutz'
+  },
+  {
+    myth: 'Inflation trifft alle gleich',
+    fact: 'Verschiedene Gruppen sind unterschiedlich betroffen',
+    explanation: 'Schuldner profitieren, Sparer verlieren'
+  }
 ];

@@ -6,11 +6,15 @@ import IntroSection from '@/components/IntroSection';
 import CausesSection from '@/components/CausesSection';
 import EffectsSection from '@/components/EffectsSection';
 import MeasurementSection from '@/components/MeasurementSection';
+import ECBPolicySection from '@/components/ECBPolicySection';
+import InflationEverydaySection from '@/components/InflationEverydaySection';
+import GlobalPerspectiveSection from '@/components/GlobalPerspectiveSection';
 import HistorySection from '@/components/HistorySection';
+import GlossarySection from '@/components/GlossarySection';
 import QuizSection from '@/components/QuizSection';
 import Navigation from '@/components/Navigation';
 
-const sections = ['#intro', '#causes', '#effects', '#measurement', '#history', '#quiz'];
+const sections = ['#intro', '#causes', '#effects', '#measurement', '#ecb-policy', '#everyday', '#global', '#history', '#glossary', '#quiz'];
 
 export default function Home() {
   const { lenis } = useLenis();
@@ -38,7 +42,11 @@ export default function Home() {
       <CausesSection />
       <EffectsSection />
       <MeasurementSection />
+      <ECBPolicySection />
+      <InflationEverydaySection />
+      <GlobalPerspectiveSection />
       <HistorySection />
+      <GlossarySection />
       <QuizSection />
 
       {/* Keyboard Instructions */}

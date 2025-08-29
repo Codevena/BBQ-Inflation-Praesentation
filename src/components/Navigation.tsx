@@ -13,7 +13,11 @@ const sectionNames = [
   'Ursachen',
   'Auswirkungen',
   'Messung',
+  'EZB-Politik',
+  'Alltag',
+  'Global',
   'Geschichte',
+  'Glossar',
   'Quiz'
 ];
 

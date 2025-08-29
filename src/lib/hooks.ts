@@ -47,6 +47,46 @@ export const useKeyboardNavigation = (sections: string[], onNavigate?: (index: n
     }
   }, [sections, scrollTo, onNavigate]);
 
+  // Scroll detection to update current section
+  useEffect(() => {
+    const updateCurrentSection = () => {
+      const sectionElements = sections.map(id => document.querySelector(id));
+      const scrollPosition = window.scrollY + window.innerHeight / 2;
+
+      for (let i = sectionElements.length - 1; i >= 0; i--) {
+        const element = sectionElements[i];
+        if (element) {
+          const rect = element.getBoundingClientRect();
+          const elementTop = rect.top + window.scrollY;
+
+          if (scrollPosition >= elementTop) {
+            if (i !== currentSection) {
+              setCurrentSection(i);
+            }
+            break;
+          }
+        }
+      }
+    };
+
+    // Throttle scroll events
+    let ticking = false;
+    const handleScroll = () => {
+      if (!ticking) {
+        requestAnimationFrame(() => {
+          updateCurrentSection();
+          ticking = false;
+        });
+        ticking = true;
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    updateCurrentSection(); // Initial check
+
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, [sections, currentSection]);
+
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       switch (e.key) {
