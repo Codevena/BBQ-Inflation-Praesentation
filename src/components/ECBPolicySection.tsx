@@ -6,6 +6,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { Chart as ChartJS, CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend, Filler } from 'chart.js';
 import { Line } from 'react-chartjs-2';
 import CountUpNumber from './CountUpNumber';
+import { Building2, TrendingUp, TrendingDown, Target, LineChart } from 'lucide-react';
 
 ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend, Filler);
 
@@ -197,14 +198,17 @@ export default function ECBPolicySection() {
     >
       <div className="container mx-auto px-6 max-w-7xl">
         <div className="text-center mb-16">
-          <h2 
+          <h2
             ref={titleRef}
-            className="text-4xl md:text-5xl font-bold text-white leading-tight mb-6"
+            className="text-4xl md:text-5xl font-bold text-white leading-tight mb-6 flex items-center justify-center gap-4"
           >
-            🏦 EZB-Geldpolitik
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-400 block">
-              Inflation steuern
-            </span>
+            <Building2 size={48} className="text-blue-400" />
+            <div>
+              EZB-Geldpolitik
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-400 block">
+                Inflation steuern
+              </span>
+            </div>
           </h2>
           <p className="text-xl text-blue-200 max-w-4xl mx-auto">
             Wie die Europäische Zentralbank mit dem Leitzins die Inflation kontrolliert
@@ -214,8 +218,9 @@ export default function ECBPolicySection() {
         {/* EZB Rate History Chart */}
         <div ref={chartRef} className="mb-16">
           <div className="bg-white/5 backdrop-blur-sm rounded-2xl p-8 border border-white/10">
-            <h3 className="text-2xl font-bold text-white mb-6 text-center">
-              📈 EZB-Leitzins 2019-2024
+            <h3 className="text-2xl font-bold text-white mb-6 text-center flex items-center justify-center gap-3">
+              <LineChart size={28} className="text-blue-400" />
+              EZB-Leitzins 2019-2024
             </h3>
             <div className="h-80">
               <Line data={chartData} options={chartOptions} />
@@ -229,8 +234,9 @@ export default function ECBPolicySection() {
         {/* Interactive Rate Simulator */}
         <div ref={simulatorRef} className="mb-16">
           <div className="bg-white/5 backdrop-blur-sm rounded-2xl p-8 border border-white/10">
-            <h3 className="text-2xl font-bold text-white mb-8 text-center">
-              🎯 Leitzins-Simulator
+            <h3 className="text-2xl font-bold text-white mb-8 text-center flex items-center justify-center gap-3">
+              <Target size={28} className="text-cyan-400" />
+              Leitzins-Simulator
             </h3>
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
 
@@ -308,7 +314,7 @@ export default function ECBPolicySection() {
           {/* High Inflation Response */}
           <div className="bg-gradient-to-r from-red-500/20 to-orange-500/20 backdrop-blur-sm rounded-2xl p-8 border border-red-400/30">
             <div className="text-center mb-6">
-              <div className="text-4xl mb-4">📈</div>
+              <TrendingUp size={48} className="text-red-400 mx-auto mb-4" />
               <h3 className="text-2xl font-bold text-red-400">Inflation zu hoch</h3>
               <p className="text-red-200 text-sm">&gt; 2% Ziel der EZB</p>
             </div>
@@ -343,7 +349,7 @@ export default function ECBPolicySection() {
           {/* Low Inflation Response */}
           <div className="bg-gradient-to-r from-blue-500/20 to-cyan-500/20 backdrop-blur-sm rounded-2xl p-8 border border-blue-400/30">
             <div className="text-center mb-6">
-              <div className="text-4xl mb-4">📉</div>
+              <TrendingDown size={48} className="text-blue-400 mx-auto mb-4" />
               <h3 className="text-2xl font-bold text-blue-400">Inflation zu niedrig</h3>
               <p className="text-blue-200 text-sm">&lt; 2% Ziel der EZB</p>
             </div>
