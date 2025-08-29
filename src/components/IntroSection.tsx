@@ -196,9 +196,9 @@ export default function IntroSection() {
       </div>
 
       {/* Floating Elements */}
-      <div className="absolute top-20 left-10 w-20 h-20 bg-blue-500/20 rounded-full animate-float" />
-      <div className="absolute top-40 right-20 w-16 h-16 bg-red-500/20 rounded-full animate-float-delayed" />
-      <div className="absolute bottom-32 left-20 w-12 h-12 bg-yellow-500/20 rounded-full animate-float" />
+      <div className="absolute top-20 left-10 w-20 h-20 bg-blue-500/20 rounded-full" />
+      <div className="absolute top-40 right-20 w-16 h-16 bg-red-500/20 rounded-full" />
+      <div className="absolute bottom-32 left-20 w-12 h-12 bg-yellow-500/20 rounded-full" />
     </section>
   );
 }

@@ -92,20 +92,20 @@ export const historicalEvents: HistoricalEvent[] = [
     impact: "Fed-Chef Volcker hob Zinsen auf über 20% an"
   },
   {
-    year: 2008,
-    country: "Zimbabwe",
-    rate: 89700000000, // 89,7 Milliarden % - offiziell gemessen
-    title: "Zimbabwe-Dollar Hyperinflation",
-    description: "Landreformen, politische Krise und Wirtschaftsmismanagement",
-    impact: "100-Billionen-Dollar-Scheine. US-Dollar wurde de facto Währung"
-  },
-  {
     year: 1989,
     country: "Argentinien",
     rate: 3079,
     title: "Argentinische Hyperinflation",
     description: "Staatsverschuldung und politische Instabilität",
     impact: "Mehrere Währungsreformen, Peso wurde mehrfach abgewertet"
+  },
+  {
+    year: 2008,
+    country: "Zimbabwe",
+    rate: 89700000000, // 89,7 Milliarden % - offiziell gemessen
+    title: "Zimbabwe-Dollar Hyperinflation",
+    description: "Landreformen, politische Krise und Wirtschaftsmismanagement",
+    impact: "100-Billionen-Dollar-Scheine. US-Dollar wurde de facto Währung"
   }
 ];
 

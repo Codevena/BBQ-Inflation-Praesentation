@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import React from 'react';
 
 interface NavigationProps {
   currentSection: number;
@@ -22,25 +22,6 @@ const sectionNames = [
 ];
 
 export default function Navigation({ currentSection, onNavigate, sections }: NavigationProps) {
-  const [isVisible, setIsVisible] = useState(true);
-  const [lastScrollY, setLastScrollY] = useState(0);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      const currentScrollY = window.scrollY;
-      
-      if (currentScrollY > lastScrollY && currentScrollY > 100) {
-        setIsVisible(false);
-      } else {
-        setIsVisible(true);
-      }
-      
-      setLastScrollY(currentScrollY);
-    };
-
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, [lastScrollY]);
 
   return (
     <>
@@ -53,10 +34,8 @@ export default function Navigation({ currentSection, onNavigate, sections }: Nav
       </div>
 
       {/* Navigation Dots */}
-      <nav 
-        className={`fixed right-6 top-1/2 -translate-y-1/2 z-40 transition-all duration-300 ${
-          isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-4'
-        }`}
+      <nav
+        className="fixed right-6 top-1/2 -translate-y-1/2 z-40 opacity-100"
       >
         <div className="flex flex-col gap-4">
           {sections.map((section, index) => (
