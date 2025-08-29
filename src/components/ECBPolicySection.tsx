@@ -5,6 +5,7 @@ import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { Chart as ChartJS, CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend } from 'chart.js';
 import { Line } from 'react-chartjs-2';
+import CountUpNumber from './CountUpNumber';
 
 ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend);
 
@@ -32,6 +33,8 @@ export default function ECBPolicySection() {
 
   const [selectedRate, setSelectedRate] = useState(2.0);
   const [showImpact, setShowImpact] = useState(false);
+  const [animatedData, setAnimatedData] = useState<number[]>(new Array(ecbRateHistory.length).fill(0));
+  const [isChartAnimated, setIsChartAnimated] = useState(false);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -76,17 +79,47 @@ export default function ECBPolicySection() {
         ease: 'power2.out'
       }, '-=0.5');
 
+      // Chart Animation Trigger
+      ScrollTrigger.create({
+        trigger: chartRef.current,
+        start: 'top 70%',
+        onEnter: () => {
+          if (!isChartAnimated) {
+            animateChart();
+            setIsChartAnimated(true);
+          }
+        }
+      });
+
     }, sectionRef);
 
     return () => ctx.revert();
-  }, []);
+  }, [isChartAnimated]);
+
+  const animateChart = () => {
+    const originalData = ecbRateHistory.map(item => item.rate);
+
+    gsap.to({ progress: 0 }, {
+      progress: 1,
+      duration: 2.5,
+      ease: "power2.out",
+      onUpdate: function() {
+        const progress = this.targets()[0].progress;
+        const newData = originalData.map((value, index) => {
+          const pointProgress = Math.max(0, Math.min(1, (progress * originalData.length - index) / 1));
+          return value * pointProgress;
+        });
+        setAnimatedData([...newData]);
+      }
+    });
+  };
 
   const chartData = {
     labels: ecbRateHistory.map(item => item.year),
     datasets: [
       {
         label: 'EZB Leitzins (%)',
-        data: ecbRateHistory.map(item => item.rate),
+        data: animatedData,
         borderColor: '#3B82F6',
         backgroundColor: 'rgba(59, 130, 246, 0.1)',
         borderWidth: 3,
@@ -358,15 +391,21 @@ export default function ECBPolicySection() {
             </p>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               <div className="text-center">
-                <div className="text-3xl font-bold text-red-400">6,9%</div>
+                <div className="text-3xl font-bold text-red-400">
+                  <CountUpNumber endValue={6.9} decimals={1} suffix="%" duration={2000} />
+                </div>
                 <div className="text-green-200">Inflation 2022</div>
               </div>
               <div className="text-center">
-                <div className="text-3xl font-bold text-blue-400">4,5%</div>
+                <div className="text-3xl font-bold text-blue-400">
+                  <CountUpNumber endValue={4.5} decimals={1} suffix="%" duration={2200} />
+                </div>
                 <div className="text-green-200">Leitzins heute</div>
               </div>
               <div className="text-center">
-                <div className="text-3xl font-bold text-green-400">2,2%</div>
+                <div className="text-3xl font-bold text-green-400">
+                  <CountUpNumber endValue={2.2} decimals={1} suffix="%" duration={2400} />
+                </div>
                 <div className="text-green-200">Inflation 2024</div>
               </div>
             </div>

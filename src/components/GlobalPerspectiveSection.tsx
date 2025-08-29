@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import CountUpNumber from './CountUpNumber';
 import { globalInflationData, inflationMythsFacts } from '@/data/inflationData';
 
 if (typeof window !== 'undefined') {
@@ -124,7 +125,12 @@ export default function GlobalPerspectiveSection() {
                   <div className="text-3xl mb-2">{country.flag}</div>
                   <h4 className="font-bold text-white text-sm mb-2">{country.country}</h4>
                   <div className={`text-2xl font-bold mb-1 ${getInflationColor(country.rate2024)}`}>
-                    {country.rate2024}%
+                    <CountUpNumber
+                      endValue={country.rate2024}
+                      decimals={1}
+                      suffix="%"
+                      duration={1500 + index * 200}
+                    />
                   </div>
                   <div className="text-xs text-purple-200">2024</div>
                   

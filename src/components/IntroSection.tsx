@@ -3,6 +3,7 @@
 import { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import CountUpNumber from './CountUpNumber';
 import { useTypewriter } from '@/lib/hooks';
 
 if (typeof window !== 'undefined') {
@@ -148,25 +149,33 @@ export default function IntroSection() {
           className="grid grid-cols-1 md:grid-cols-4 gap-6 mt-16"
         >
           <div className="bg-white/10 backdrop-blur-sm rounded-xl p-6 border border-white/20">
-            <div className="text-3xl font-bold text-red-400 mb-2">6.9%</div>
+            <div className="text-3xl font-bold text-red-400 mb-2">
+              <CountUpNumber endValue={6.9} decimals={1} suffix="%" duration={2000} />
+            </div>
             <div className="text-blue-200">Deutschland 2022</div>
             <div className="text-sm text-white/60 mt-1">Höchste Inflation seit 1973</div>
           </div>
 
           <div className="bg-white/10 backdrop-blur-sm rounded-xl p-6 border border-white/20">
-            <div className="text-3xl font-bold text-yellow-400 mb-2">2.0%</div>
+            <div className="text-3xl font-bold text-yellow-400 mb-2">
+              <CountUpNumber endValue={2.0} decimals={1} suffix="%" duration={1800} />
+            </div>
             <div className="text-blue-200">EZB Ziel</div>
             <div className="text-sm text-white/60 mt-1">Preisstabilitätsziel</div>
           </div>
 
           <div className="bg-white/10 backdrop-blur-sm rounded-xl p-6 border border-white/20">
-            <div className="text-3xl font-bold text-orange-400 mb-2">2.2%</div>
+            <div className="text-3xl font-bold text-orange-400 mb-2">
+              <CountUpNumber endValue={2.2} decimals={1} suffix="%" duration={2200} />
+            </div>
             <div className="text-blue-200">Deutschland 2024</div>
             <div className="text-sm text-white/60 mt-1">Rückgang zur Normalität</div>
           </div>
 
           <div className="bg-white/10 backdrop-blur-sm rounded-xl p-6 border border-white/20">
-            <div className="text-3xl font-bold text-green-400 mb-2">-4.3%</div>
+            <div className="text-3xl font-bold text-green-400 mb-2">
+              <CountUpNumber endValue={-4.3} decimals={1} suffix="%" duration={2400} />
+            </div>
             <div className="text-blue-200">Reallöhne 2022</div>
             <div className="text-sm text-white/60 mt-1">Kaufkraftverlust</div>
           </div>
