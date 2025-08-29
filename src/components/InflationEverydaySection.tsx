@@ -3,6 +3,8 @@
 import { useEffect, useRef, useState } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import TimeTravelSimulator from './TimeTravelSimulator';
+import SalaryInflationTracker from './SalaryInflationTracker';
 
 if (typeof window !== 'undefined') {
   gsap.registerPlugin(ScrollTrigger);
@@ -272,6 +274,16 @@ export default function InflationEverydaySection() {
               </div>
             </div>
           </div>
+        </div>
+
+        {/* Time Travel Simulator */}
+        <div className="mb-16">
+          <TimeTravelSimulator />
+        </div>
+
+        {/* Salary Inflation Tracker */}
+        <div className="mb-16">
+          <SalaryInflationTracker />
         </div>
 
         {/* Inflation Protection Assets */}
