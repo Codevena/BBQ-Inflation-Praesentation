@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import CountUpNumber from './CountUpNumber';
+import { Lightbulb } from 'lucide-react';
 import SequentialTypewriter from './SequentialTypewriter';
 
 if (typeof window !== 'undefined') {
@@ -175,8 +176,9 @@ export default function IntroSection() {
 
         {/* Definition Box */}
         <div className="mt-12 bg-gradient-to-r from-blue-500/20 to-purple-500/20 backdrop-blur-sm rounded-2xl p-8 border border-blue-400/30">
-          <h3 className="text-2xl font-bold text-white mb-4 text-center">
-            💡 Was ist Inflation?
+          <h3 className="text-2xl font-bold text-white mb-4 text-center flex items-center justify-center gap-3">
+            <Lightbulb size={28} className="text-yellow-400" />
+            Was ist Inflation?
           </h3>
           <p className="text-blue-100 leading-relaxed text-center max-w-4xl mx-auto">
             Inflation ist der <strong>allgemeine Anstieg des Preisniveaus</strong> für Güter und Dienstleistungen

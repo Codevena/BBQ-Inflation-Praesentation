@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { Globe, Search, Lightbulb, Laptop, Thermometer, Brain } from 'lucide-react';
 import CountUpNumber from './CountUpNumber';
 import { globalInflationData, inflationMythsFacts } from '@/data/inflationData';
 
@@ -94,7 +95,7 @@ export default function GlobalPerspectiveSection() {
             ref={titleRef}
             className="text-4xl md:text-5xl font-bold text-white leading-tight mb-6"
           >
-            🌍 Inflation
+            <Globe size={28} className="text-blue-400" /> Inflation
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-400 block">
               weltweit
             </span>
@@ -151,7 +152,10 @@ export default function GlobalPerspectiveSection() {
           </div>
 
           <div className="bg-white/5 backdrop-blur-sm rounded-2xl p-6 border border-white/10">
-            <h4 className="text-xl font-bold text-white mb-4">🔍 Erkenntnisse:</h4>
+            <h4 className="text-xl font-bold text-white mb-4 flex items-center gap-2">
+              <Search size={24} className="text-blue-400" />
+              Erkenntnisse:
+            </h4>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               <div className="text-center">
                 <div className="text-2xl font-bold text-green-400 mb-2">Entwickelte Länder</div>
@@ -177,8 +181,9 @@ export default function GlobalPerspectiveSection() {
 
         {/* Inflation Myths & Facts */}
         <div ref={mythsRef} className="mb-16">
-          <h3 className="text-3xl font-bold text-white mb-8 text-center">
-            🧠 Mythen vs. Fakten
+          <h3 className="text-3xl font-bold text-white mb-8 text-center flex items-center justify-center gap-3">
+            <Brain size={32} className="text-purple-400" />
+            Mythen vs. Fakten
           </h3>
           
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -229,7 +234,9 @@ export default function GlobalPerspectiveSection() {
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <div className="bg-gradient-to-r from-blue-500/20 to-cyan-500/20 backdrop-blur-sm rounded-xl p-6 border border-blue-400/30">
-              <div className="text-4xl mb-4 text-center">💻</div>
+              <div className="mb-4 text-center">
+                <Laptop size={48} className="text-blue-400 mx-auto" />
+              </div>
               <h4 className="text-xl font-bold text-white mb-4">Digitale Währungen</h4>
               <p className="text-blue-200 text-sm mb-4">
                 Zentralbank-Digitalwährungen (CBDCs) könnten Geldpolitik präziser machen
@@ -242,7 +249,9 @@ export default function GlobalPerspectiveSection() {
             </div>
 
             <div className="bg-gradient-to-r from-green-500/20 to-emerald-500/20 backdrop-blur-sm rounded-xl p-6 border border-green-400/30">
-              <div className="text-4xl mb-4 text-center">🌡️</div>
+              <div className="mb-4 text-center">
+                <Thermometer size={48} className="text-green-400 mx-auto" />
+              </div>
               <h4 className="text-xl font-bold text-white mb-4">Klimawandel</h4>
               <p className="text-green-200 text-sm mb-4">
                 Extremwetter und Energiewende beeinflussen Preise langfristig

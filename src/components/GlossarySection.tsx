@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { BookOpen, Search, Link, GraduationCap, Brain, Globe } from 'lucide-react';
 
 if (typeof window !== 'undefined') {
   gsap.registerPlugin(ScrollTrigger);
@@ -161,14 +162,17 @@ export default function GlossarySection() {
     >
       <div className="container mx-auto px-6 max-w-7xl">
         <div className="text-center mb-16">
-          <h2 
+          <h2
             ref={titleRef}
-            className="text-4xl md:text-5xl font-bold text-white leading-tight mb-6"
+            className="text-4xl md:text-5xl font-bold text-white leading-tight mb-6 flex items-center justify-center gap-4"
           >
-            📚 Glossar &
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-gray-400 to-slate-400 block">
-              Vertiefung
-            </span>
+            <BookOpen size={48} className="text-gray-400" />
+            <div>
+              Glossar &
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-gray-400 to-slate-400 block">
+                Vertiefung
+              </span>
+            </div>
           </h2>
           <p className="text-xl text-gray-200 max-w-4xl mx-auto">
             Alle wichtigen Begriffe und weiterführende Ressourcen für Inflation-Experten
@@ -231,7 +235,7 @@ export default function GlossarySection() {
 
           {filteredTerms.length === 0 && (
             <div className="text-center py-12">
-              <div className="text-4xl mb-4">🔍</div>
+              <Search size={48} className="text-gray-400 mx-auto mb-4" />
               <p className="text-gray-400">Keine Begriffe gefunden. Versuche einen anderen Suchbegriff.</p>
             </div>
           )}
@@ -239,8 +243,9 @@ export default function GlossarySection() {
 
         {/* Further Resources */}
         <div ref={resourcesRef} className="mb-16">
-          <h3 className="text-3xl font-bold text-white mb-8 text-center">
-            🔗 Weiterführende Ressourcen
+          <h3 className="text-3xl font-bold text-white mb-8 text-center flex items-center justify-center gap-3">
+            <Link size={32} className="text-blue-400" />
+            Weiterführende Ressourcen
           </h3>
           
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -277,8 +282,9 @@ export default function GlossarySection() {
         <div ref={summaryRef}>
           <div className="bg-gradient-to-r from-blue-500/20 to-purple-500/20 backdrop-blur-sm rounded-2xl p-8 border border-blue-400/30">
             <div className="text-center">
-              <h3 className="text-3xl font-bold text-white mb-6">
-                🎓 Herzlichen Glückwunsch!
+              <h3 className="text-3xl font-bold text-white mb-6 flex items-center justify-center gap-3">
+                <GraduationCap size={36} className="text-blue-400" />
+                Herzlichen Glückwunsch!
               </h3>
               <p className="text-xl text-blue-100 mb-8">
                 Du hast jetzt ein umfassendes Verständnis von Inflation entwickelt
@@ -286,7 +292,7 @@ export default function GlossarySection() {
               
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
                 <div className="text-center">
-                  <div className="text-4xl mb-3">🧠</div>
+                  <Brain size={48} className="text-purple-400 mx-auto mb-3" />
                   <h4 className="font-bold text-white mb-2">Theorie verstanden</h4>
                   <p className="text-blue-200 text-sm">Definition, Messung, Ursachen</p>
                 </div>
@@ -296,7 +302,7 @@ export default function GlossarySection() {
                   <p className="text-blue-200 text-sm">EZB-Politik, Alltagsauswirkungen</p>
                 </div>
                 <div className="text-center">
-                  <div className="text-4xl mb-3">🌍</div>
+                  <Globe size={48} className="text-blue-400 mx-auto mb-3" />
                   <h4 className="font-bold text-white mb-2">Global gedacht</h4>
                   <p className="text-blue-200 text-sm">Internationale Perspektive</p>
                 </div>

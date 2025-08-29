@@ -93,7 +93,10 @@ export default function MeasurementSection() {
                   Konsumzwecke kaufen.
                 </p>
                 <div className="bg-cyan-500/10 border border-cyan-400/30 rounded-lg p-4">
-                  <h4 className="font-semibold text-cyan-300 mb-2">🛒 Warenkorb-Methode:</h4>
+                  <h4 className="font-semibold text-cyan-300 mb-2 flex items-center gap-2">
+                    <ShoppingCart size={20} className="text-cyan-400" />
+                    Warenkorb-Methode:
+                  </h4>
                   <p className="text-sm">
                     Ein repräsentativer "Warenkorb" mit ca. 650 Gütern und Dienstleistungen 
                     wird regelmäßig bepreist. Die Gewichtung erfolgt nach den Ausgabenanteilen 
@@ -196,12 +199,12 @@ export default function MeasurementSection() {
             </h3>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               <div className="text-center">
-                <div className="text-4xl mb-2">🇩🇪</div>
+                <Flag size={48} className="text-red-400 mx-auto mb-2" />
                 <h4 className="font-semibold text-white mb-2">Statistisches Bundesamt</h4>
                 <p className="text-cyan-200 text-sm">Berechnet den deutschen VPI monatlich</p>
               </div>
               <div className="text-center">
-                <div className="text-4xl mb-2">🇪🇺</div>
+                <Flag size={48} className="text-blue-400 mx-auto mb-2" />
                 <h4 className="font-semibold text-white mb-2">Eurostat</h4>
                 <p className="text-cyan-200 text-sm">Koordiniert den HVPI für die EU</p>
               </div>
