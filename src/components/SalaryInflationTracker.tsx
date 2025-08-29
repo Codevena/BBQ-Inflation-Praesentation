@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import { gsap } from 'gsap';
+import { DollarSign, BarChart3, TrendingUp, TrendingDown, Target, Lightbulb, Banknote } from 'lucide-react';
 
 // Reale Inflationsdaten Deutschland
 const inflationData = {

@@ -11,8 +11,8 @@ export const metadata: Metadata = {
   authors: [{ name: "Inflation Presentation" }],
   manifest: '/manifest.json',
   icons: {
-    icon: '/icon',
-    apple: '/apple-icon',
+    icon: '/icons/logo.png',
+    apple: '/icons/logo.png',
   },
 };
 

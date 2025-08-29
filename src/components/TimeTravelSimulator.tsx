@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import { gsap } from 'gsap';
+import { ShoppingCart, DollarSign, Target, BarChart3, Lightbulb } from 'lucide-react';
 
 // Historische Inflationsdaten (vereinfacht)
 const historicalInflation = {
@@ -114,8 +115,9 @@ export default function TimeTravelSimulator() {
         </div>
 
         <div>
-          <label className="block text-white font-semibold mb-3">
-            💰 Betrag eingeben:
+          <label className="block text-white font-semibold mb-3 flex items-center gap-2">
+            <DollarSign size={20} className="text-green-400" />
+            Betrag eingeben:
           </label>
           <div className="relative">
             <input
@@ -167,7 +169,10 @@ export default function TimeTravelSimulator() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {/* Hauptergebnis */}
             <div className="bg-white/10 rounded-lg p-4">
-              <h5 className="text-lg font-bold text-white mb-3">💰 Kaufkraft heute:</h5>
+              <h5 className="text-lg font-bold text-white mb-3 flex items-center gap-2">
+                <DollarSign size={20} className="text-green-400" />
+                Kaufkraft heute:
+              </h5>
               <div className="text-3xl font-bold text-green-400 mb-2">
                 {result.todayValue.toLocaleString('de-DE', { 
                   style: 'currency', 
@@ -185,7 +190,10 @@ export default function TimeTravelSimulator() {
 
             {/* Beispielprodukt */}
             <div className="bg-white/10 rounded-lg p-4">
-              <h5 className="text-lg font-bold text-white mb-3">🛒 Preisbeispiel:</h5>
+              <h5 className="text-lg font-bold text-white mb-3 flex items-center gap-2">
+                <ShoppingCart size={20} className="text-purple-400" />
+                Preisbeispiel:
+              </h5>
               <div className="mb-2">
                 <span className="text-purple-300">{result.example.name}</span>
               </div>
