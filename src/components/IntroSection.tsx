@@ -1,10 +1,10 @@
 'use client';
 
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import CountUpNumber from './CountUpNumber';
-import { useTypewriter } from '@/lib/hooks';
+import SequentialTypewriter from './SequentialTypewriter';
 
 if (typeof window !== 'undefined') {
   gsap.registerPlugin(ScrollTrigger);
@@ -17,17 +17,7 @@ export default function IntroSection() {
   const worldMapRef = useRef<HTMLDivElement>(null);
   const statsRef = useRef<HTMLDivElement>(null);
 
-  const { displayText: titleText, isComplete: titleComplete } = useTypewriter(
-    'Inflation verstehen',
-    80,
-    500
-  );
-
-  const { displayText: subtitleText } = useTypewriter(
-    'Eine interaktive Reise durch Ursachen, Auswirkungen und Geschichte der Geldentwertung',
-    50,
-    titleComplete ? 1000 : 0
-  );
+  const [typewriterComplete, setTypewriterComplete] = useState(false);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -127,21 +117,17 @@ export default function IntroSection() {
 
       {/* Main Content */}
       <div className="relative z-10 text-center px-6 max-w-4xl mx-auto">
-        <h1 
-          ref={titleRef}
-          className="text-5xl md:text-7xl font-bold text-white mb-6 leading-tight"
-        >
-          {titleText}
-          <span className="animate-pulse">|</span>
-        </h1>
-        
-        <p 
-          ref={subtitleRef}
-          className="text-xl md:text-2xl text-blue-200 mb-12 leading-relaxed max-w-3xl mx-auto"
-        >
-          {subtitleText}
-          {!titleComplete && <span className="animate-pulse">|</span>}
-        </p>
+        <div ref={titleRef}>
+          <SequentialTypewriter
+            texts={[
+              'Inflation verstehen',
+              'Eine interaktive Reise durch Ursachen, Auswirkungen und Geschichte der Geldentwertung'
+            ]}
+            speeds={[80, 50]}
+            delays={[500, 1000]}
+            onComplete={() => setTypewriterComplete(true)}
+          />
+        </div>
 
         {/* Key Statistics */}
         <div

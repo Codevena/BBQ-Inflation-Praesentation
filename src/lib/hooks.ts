@@ -217,9 +217,6 @@ export const useTypewriter = (
   const [displayText, setDisplayText] = useState('');
   const [isComplete, setIsComplete] = useState(false);
   const [isMounted, setIsMounted] = useState(false);
-  const hasStartedRef = useRef(false);
-  const timeoutRef = useRef<NodeJS.Timeout | null>(null);
-  const intervalRef = useRef<NodeJS.Timeout | null>(null);
 
   // Warte auf Client-Side Hydration
   useEffect(() => {
@@ -227,34 +224,29 @@ export const useTypewriter = (
   }, []);
 
   useEffect(() => {
-    // Nur auf Client-Side und nur einmal ausführen
-    if (!isMounted || hasStartedRef.current) return;
+    // Nur auf Client-Side ausführen
+    if (!isMounted) return;
 
-    hasStartedRef.current = true;
+    // Reset State
+    setDisplayText('');
+    setIsComplete(false);
 
-    timeoutRef.current = setTimeout(() => {
+    const timeout = setTimeout(() => {
       let index = 0;
-      intervalRef.current = setInterval(() => {
+      const interval = setInterval(() => {
         if (index <= text.length) {
           setDisplayText(text.slice(0, index));
           index++;
         } else {
           setIsComplete(true);
-          if (intervalRef.current) {
-            clearInterval(intervalRef.current);
-          }
+          clearInterval(interval);
         }
       }, speed);
+
+      return () => clearInterval(interval);
     }, startDelay);
 
-    return () => {
-      if (timeoutRef.current) {
-        clearTimeout(timeoutRef.current);
-      }
-      if (intervalRef.current) {
-        clearInterval(intervalRef.current);
-      }
-    };
+    return () => clearTimeout(timeout);
   }, [isMounted, text, speed, startDelay]);
 
   return { displayText, isComplete };
