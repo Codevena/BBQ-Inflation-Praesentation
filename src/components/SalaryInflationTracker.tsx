@@ -94,8 +94,9 @@ export default function SalaryInflationTracker() {
   return (
     <div className="bg-gradient-to-br from-green-900/20 to-yellow-900/20 backdrop-blur-sm rounded-2xl p-8 border border-green-400/30">
       <div className="text-center mb-8">
-        <h3 className="text-3xl font-bold text-white mb-4">
-          💰 Gehalt-Inflation-Tracker
+        <h3 className="text-3xl font-bold text-white mb-4 flex items-center justify-center gap-3">
+          <DollarSign size={32} className="text-green-400" />
+          Gehalt-Inflation-Tracker
         </h3>
         <p className="text-green-200">
           Verdienst du real mehr oder weniger als vor 4 Jahren?
@@ -162,7 +163,10 @@ export default function SalaryInflationTracker() {
               Berechne Reallohn...
             </div>
           ) : (
-            '📊 Reallohn berechnen!'
+            <>
+              <BarChart3 size={20} className="mr-2" />
+              Reallohn berechnen!
+            </>
           )}
         </button>
       </div>
@@ -183,7 +187,12 @@ export default function SalaryInflationTracker() {
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
               <div className="bg-white/10 rounded-lg p-4 text-center">
-                <div className="text-2xl mb-2">{result.isWinner ? '📈' : '📉'}</div>
+                <div className="mb-2">
+                  {result.isWinner ?
+                    <TrendingUp size={32} className="text-green-400 mx-auto" /> :
+                    <TrendingDown size={32} className="text-red-400 mx-auto" />
+                  }
+                </div>
                 <div className="text-sm text-gray-300">Reallohn-Änderung</div>
                 <div className={`text-xl font-bold ${result.isWinner ? 'text-green-400' : 'text-red-400'}`}>
                   {result.realWageChange > 0 ? '+' : ''}{result.realWageChange.toFixed(1)}%
@@ -191,7 +200,7 @@ export default function SalaryInflationTracker() {
               </div>
 
               <div className="bg-white/10 rounded-lg p-4 text-center">
-                <div className="text-2xl mb-2">💸</div>
+                <Banknote size={32} className="text-yellow-400 mx-auto mb-2" />
                 <div className="text-sm text-gray-300">Monatlich {result.isWinner ? 'mehr' : 'weniger'}</div>
                 <div className={`text-xl font-bold ${result.monthlyDifference > 0 ? 'text-green-400' : 'text-red-400'}`}>
                   {result.monthlyDifference > 0 ? '+' : ''}{result.monthlyDifference.toLocaleString('de-DE', { 

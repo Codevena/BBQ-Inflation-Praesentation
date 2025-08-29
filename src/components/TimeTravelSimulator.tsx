@@ -158,8 +158,9 @@ export default function TimeTravelSimulator() {
       {result && (
         <div className="result-card bg-gradient-to-r from-green-500/20 to-blue-500/20 backdrop-blur-sm rounded-xl p-6 border border-green-400/30">
           <div className="text-center mb-6">
-            <h4 className="text-2xl font-bold text-white mb-2">
-              🎯 Deine Zeitreise-Ergebnisse
+            <h4 className="text-2xl font-bold text-white mb-2 flex items-center justify-center gap-3">
+              <Target size={28} className="text-green-400" />
+              Deine Zeitreise-Ergebnisse
             </h4>
             <p className="text-green-200">
               Von {selectedYear} bis heute (2024)
@@ -216,7 +217,10 @@ export default function TimeTravelSimulator() {
 
           {/* Zusätzliche Infos */}
           <div className="mt-6 bg-blue-500/10 rounded-lg p-4">
-            <h5 className="text-lg font-bold text-white mb-3">📊 Inflation-Details:</h5>
+            <h5 className="text-lg font-bold text-white mb-3 flex items-center gap-2">
+              <BarChart3 size={20} className="text-blue-400" />
+              Inflation-Details:
+            </h5>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-sm">
               <div>
                 <span className="text-gray-400">Zeitraum:</span>
@@ -239,10 +243,13 @@ export default function TimeTravelSimulator() {
 
           {/* Fun Fact */}
           <div className="mt-4 text-center">
-            <p className="text-purple-200 text-sm">
-              💡 <strong>Fun Fact:</strong> Dein Geld hätte sich in {result.yearsDiff} Jahren 
-              um {result.purchasingPowerLoss.toFixed(0)}% "vermehrt" - aber nur nominal! 
-              Real hat es die gleiche Kaufkraft wie damals.
+            <p className="text-purple-200 text-sm flex items-start gap-2">
+              <Lightbulb size={16} className="text-yellow-400 mt-0.5 flex-shrink-0" />
+              <span>
+                <strong>Fun Fact:</strong> Dein Geld hätte sich in {result.yearsDiff} Jahren
+                um {result.purchasingPowerLoss.toFixed(0)}% "vermehrt" - aber nur nominal!
+                Real hat es die gleiche Kaufkraft wie damals.
+              </span>
             </p>
           </div>
         </div>

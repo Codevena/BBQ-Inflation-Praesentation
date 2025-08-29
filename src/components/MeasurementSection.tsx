@@ -113,8 +113,9 @@ export default function MeasurementSection() {
             </div>
 
             <div className="bg-white/5 backdrop-blur-sm rounded-2xl p-8 border border-white/10">
-              <h3 className="text-2xl font-bold text-white mb-6">
-                🎯 Harmonisierter VPI (HVPI)
+              <h3 className="text-2xl font-bold text-white mb-6 flex items-center gap-3">
+                <Target size={28} className="text-cyan-400" />
+                Harmonisierter VPI (HVPI)
               </h3>
               <p className="text-cyan-200 leading-relaxed mb-4">
                 Für EU-weite Vergleiche verwendet die EZB den <strong className="text-white">HVPI</strong>, 

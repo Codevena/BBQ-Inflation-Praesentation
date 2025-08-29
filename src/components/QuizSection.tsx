@@ -133,7 +133,7 @@ export default function QuizSection() {
     const percentage = (score / total) * 100;
     if (percentage >= 80) return 'Ausgezeichnet! Du verstehst Inflation sehr gut! 🎉';
     if (percentage >= 60) return 'Gut gemacht! Du hast ein solides Verständnis. 👍';
-    return 'Nicht schlecht, aber da ist noch Luft nach oben! 📚';
+    return 'Nicht schlecht, aber da ist noch Luft nach oben! 📖';
   };
 
   const currentQuestion = quizQuestions[quizState.currentQuestion];
@@ -263,7 +263,7 @@ export default function QuizSection() {
             /* Results */
             <div ref={resultsRef} className="bg-white/5 backdrop-blur-sm rounded-2xl p-8 border border-white/10 text-center">
               <div className="mb-8">
-                <div className="text-6xl mb-4">🎯</div>
+                <Target size={64} className="text-blue-400 mx-auto mb-4" />
                 <h3 className="text-3xl font-bold text-white mb-4">
                   Quiz abgeschlossen!
                 </h3>
@@ -305,7 +305,8 @@ export default function QuizSection() {
                   onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
                   className="px-8 py-3 bg-white/10 text-white rounded-lg hover:bg-white/20 transition-colors font-semibold"
                 >
-                  🏠 Zum Anfang
+                  <Home size={20} className="mr-2" />
+                  Zum Anfang
                 </button>
               </div>
 
