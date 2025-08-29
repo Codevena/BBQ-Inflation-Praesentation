@@ -85,13 +85,13 @@ export default function CausesSection() {
         y: 50
       });
 
-      // Main animation timeline
+      // Main animation timeline - optimized for better performance
       const tl = gsap.timeline({
         scrollTrigger: {
           trigger: sectionRef.current,
-          start: 'top 60%',
-          end: 'bottom 40%',
-          toggleActions: 'play none none reverse',
+          start: 'top 80%',
+          end: 'bottom 20%',
+          toggleActions: 'play none none none',
           onEnter: () => animateChart(),
         }
       });

@@ -3,11 +3,11 @@
 import { useEffect, useRef, useState } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { Chart as ChartJS, CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend } from 'chart.js';
+import { Chart as ChartJS, CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend, Filler } from 'chart.js';
 import { Line } from 'react-chartjs-2';
 import CountUpNumber from './CountUpNumber';
 
-ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend);
+ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend, Filler);
 
 if (typeof window !== 'undefined') {
   gsap.registerPlugin(ScrollTrigger);
@@ -33,8 +33,8 @@ export default function ECBPolicySection() {
 
   const [selectedRate, setSelectedRate] = useState(2.0);
   const [showImpact, setShowImpact] = useState(false);
-  const [animatedData, setAnimatedData] = useState<number[]>(new Array(ecbRateHistory.length).fill(0));
-  const [isChartAnimated, setIsChartAnimated] = useState(false);
+  const [animatedData, setAnimatedData] = useState(ecbRateHistory.map(() => 0));
+  const [isAnimating, setIsAnimating] = useState(false);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -44,13 +44,14 @@ export default function ECBPolicySection() {
         y: 50
       });
 
-      // Main animation timeline
+      // Main animation timeline - optimized for better performance
       const tl = gsap.timeline({
         scrollTrigger: {
           trigger: sectionRef.current,
-          start: 'top 60%',
-          end: 'bottom 40%',
-          toggleActions: 'play none none reverse',
+          start: 'top 80%',
+          end: 'bottom 20%',
+          toggleActions: 'play none none none',
+          onEnter: () => animateChart(),
         }
       });
 
@@ -79,30 +80,21 @@ export default function ECBPolicySection() {
         ease: 'power2.out'
       }, '-=0.5');
 
-      // Chart Animation Trigger
-      ScrollTrigger.create({
-        trigger: chartRef.current,
-        start: 'top 70%',
-        onEnter: () => {
-          if (!isChartAnimated) {
-            animateChart();
-            setIsChartAnimated(true);
-          }
-        }
-      });
-
     }, sectionRef);
 
     return () => ctx.revert();
-  }, [isChartAnimated]);
+  }, []);
 
   const animateChart = () => {
+    if (isAnimating) return;
+    setIsAnimating(true);
+
     const originalData = ecbRateHistory.map(item => item.rate);
 
     gsap.to({ progress: 0 }, {
       progress: 1,
-      duration: 2.5,
-      ease: "power2.out",
+      duration: 3,
+      ease: 'power2.out',
       onUpdate: function() {
         const progress = this.targets()[0].progress;
         const newData = originalData.map((value, index) => {
@@ -110,7 +102,8 @@ export default function ECBPolicySection() {
           return value * pointProgress;
         });
         setAnimatedData([...newData]);
-      }
+      },
+      onComplete: () => setIsAnimating(false)
     });
   };
 
@@ -179,6 +172,9 @@ export default function ECBPolicySection() {
         max: 5,
       }
     },
+    animation: {
+      duration: 0, // We handle animation manually
+    }
   };
 
   const getImpactColor = (rate: number) => {

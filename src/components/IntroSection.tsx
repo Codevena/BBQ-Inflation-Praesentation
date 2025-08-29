@@ -21,58 +21,64 @@ export default function IntroSection() {
 
   useEffect(() => {
     const ctx = gsap.context(() => {
+      // Check if all refs are available
+      const elements = [titleRef.current, subtitleRef.current, worldMapRef.current, statsRef.current].filter(Boolean);
+      if (elements.length === 0) return;
+
       // Initial setup
-      gsap.set([titleRef.current, subtitleRef.current, worldMapRef.current, statsRef.current], {
+      gsap.set(elements, {
         opacity: 0,
         y: 50
       });
 
-      // Animation timeline
+      // Animation timeline - only trigger when section is actually visible
       const tl = gsap.timeline({
         scrollTrigger: {
           trigger: sectionRef.current,
-          start: 'top center',
-          end: 'bottom center',
-          toggleActions: 'play none none reverse'
+          start: 'top 80%',
+          end: 'bottom 20%',
+          toggleActions: 'play none none none'
         }
       });
 
-      tl.to(titleRef.current, {
-        opacity: 1,
-        y: 0,
-        duration: 1,
-        ease: 'power2.out'
-      })
-      .to(subtitleRef.current, {
-        opacity: 1,
-        y: 0,
-        duration: 1,
-        ease: 'power2.out'
-      }, '-=0.5')
-      .to(worldMapRef.current, {
-        opacity: 1,
-        y: 0,
-        duration: 1.2,
-        ease: 'power2.out'
-      }, '-=0.3')
-      .to(statsRef.current, {
-        opacity: 1,
-        y: 0,
-        duration: 1,
-        ease: 'power2.out'
-      }, '-=0.5');
+      // Add animations only for existing elements
+      if (titleRef.current) {
+        tl.to(titleRef.current, {
+          opacity: 1,
+          y: 0,
+          duration: 1,
+          ease: 'power2.out'
+        });
+      }
 
-      // Parallax effect for background elements
-      gsap.to(worldMapRef.current, {
-        yPercent: -20,
-        ease: 'none',
-        scrollTrigger: {
-          trigger: sectionRef.current,
-          start: 'top bottom',
-          end: 'bottom top',
-          scrub: true
-        }
-      });
+      if (subtitleRef.current) {
+        tl.to(subtitleRef.current, {
+          opacity: 1,
+          y: 0,
+          duration: 1,
+          ease: 'power2.out'
+        }, '-=0.5');
+      }
+
+      if (worldMapRef.current) {
+        tl.to(worldMapRef.current, {
+          opacity: 1,
+          y: 0,
+          duration: 1.2,
+          ease: 'power2.out'
+        }, '-=0.3');
+      }
+
+      if (statsRef.current) {
+        tl.to(statsRef.current, {
+          opacity: 1,
+          y: 0,
+          duration: 1,
+          ease: 'power2.out'
+        }, '-=0.5');
+      }
+
+      // Removed parallax effect for better scroll performance
 
     }, sectionRef);
 
@@ -108,10 +114,10 @@ export default function IntroSection() {
           <path d="M100 250 L150 240 L200 250 L250 230 L300 240 L350 220 L400 230 L450 210" className="text-blue-400" />
           <path d="M200 300 L250 290 L300 300 L350 280 L400 290 L450 270 L500 280" className="text-blue-400" />
           
-          {/* Inflation hotspots */}
-          <circle cx="200" cy="200" r="8" className="fill-red-500 animate-pulse" />
-          <circle cx="350" cy="180" r="6" className="fill-yellow-500 animate-pulse" />
-          <circle cx="450" cy="230" r="7" className="fill-orange-500 animate-pulse" />
+          {/* Inflation hotspots - reduced animation for performance */}
+          <circle cx="200" cy="200" r="8" className="fill-red-500 opacity-80" />
+          <circle cx="350" cy="180" r="6" className="fill-yellow-500 opacity-80" />
+          <circle cx="450" cy="230" r="7" className="fill-orange-500 opacity-80" />
         </svg>
       </div>
 
@@ -183,10 +189,6 @@ export default function IntroSection() {
 
         {/* Scroll Indicator */}
         <div className="absolute bottom-8 left-1/2 -translate-x-1/2">
-          <div className="w-6 h-10 border-2 border-white/50 rounded-full flex justify-center">
-            <div className="w-1 h-3 bg-white/50 rounded-full mt-2" />
-          </div>
-          <p className="text-white/60 text-sm mt-2">Scrollen oder → drücken</p>
         </div>
       </div>
 

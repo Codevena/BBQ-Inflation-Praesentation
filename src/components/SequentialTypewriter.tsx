@@ -52,10 +52,10 @@ export default function SequentialTypewriter({
             index++;
           } else {
             clearInterval(interval);
-            // Nächsten Text nach kurzer Pause
+            // Nächsten Text nach kurzer Pause (verkürzt)
             setTimeout(() => {
               typeText(textIndex + 1);
-            }, 200);
+            }, 100);
           }
         }, speed);
       }, delay);
@@ -74,6 +74,7 @@ export default function SequentialTypewriter({
       <p className="text-xl md:text-2xl text-blue-200 mb-12 leading-relaxed max-w-3xl mx-auto">
         {displayTexts[1]}
         {currentTextIndex === 1 && !isComplete && <span className="animate-pulse">|</span>}
+        {isComplete && <span className="animate-pulse">|</span>}
       </p>
     </>
   );
