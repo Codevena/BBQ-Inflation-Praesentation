@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 
@@ -9,7 +9,16 @@ export const metadata: Metadata = {
   description: "Eine immersive Reise durch das Thema Inflation mit interaktiven Diagrammen und Animationen",
   keywords: "Inflation, Wirtschaft, Präsentation, Interaktiv, Deutschland",
   authors: [{ name: "Inflation Presentation" }],
-  viewport: "width=device-width, initial-scale=1",
+  manifest: '/manifest.json',
+  icons: {
+    icon: '/icon',
+    apple: '/apple-icon',
+  },
+};
+
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1,
 };
 
 export default function RootLayout({
