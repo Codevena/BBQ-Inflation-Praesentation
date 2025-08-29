@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { DollarSign, Home, TrendingUp, CreditCard, Target, BarChart3, Shield, TrendingUp as TrendingUpIcon } from 'lucide-react';
+import { DollarSign, Home, TrendingUp, CreditCard, Target, BarChart3, Shield, TrendingUp as TrendingUpIcon, Calculator, Lightbulb } from 'lucide-react';
 import TimeTravelSimulator from './TimeTravelSimulator';
 import SalaryInflationTracker from './SalaryInflationTracker';
 
@@ -180,8 +180,9 @@ export default function InflationEverydaySection() {
         {/* Personal Inflation Calculator */}
         <div ref={calculatorRef} className="mb-16">
           <div className="bg-white/5 backdrop-blur-sm rounded-2xl p-8 border border-white/10">
-            <h3 className="text-2xl font-bold text-white mb-8 text-center">
-              🧮 Persönlicher Kaufkraft-Rechner
+            <h3 className="text-2xl font-bold text-white mb-8 text-center flex items-center justify-center gap-3">
+              <Calculator size={28} className="text-blue-400" />
+              Persönlicher Kaufkraft-Rechner
             </h3>
             
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">

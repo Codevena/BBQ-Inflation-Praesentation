@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { Globe, Search, Lightbulb, Laptop, Thermometer, Brain } from 'lucide-react';
+import { Globe, Search, Lightbulb, Laptop, Thermometer, Brain, Map, CheckCircle, Bot, Star } from 'lucide-react';
 import CountUpNumber from './CountUpNumber';
 import { globalInflationData, inflationMythsFacts } from '@/data/inflationData';
 
@@ -107,8 +107,9 @@ export default function GlobalPerspectiveSection() {
 
         {/* Global Inflation Map */}
         <div ref={worldMapRef} className="mb-16">
-          <h3 className="text-3xl font-bold text-white mb-8 text-center">
-            🗺️ Inflation weltweit (2024)
+          <h3 className="text-3xl font-bold text-white mb-8 text-center flex items-center justify-center gap-3">
+            <Map size={32} className="text-blue-400" />
+            Inflation weltweit (2024)
           </h3>
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
@@ -202,7 +203,7 @@ export default function GlobalPerspectiveSection() {
                 </div>
                 
                 <div className="flex items-start gap-4">
-                  <div className="text-2xl">✅</div>
+                  <CheckCircle size={24} className="text-green-400 mt-1" />
                   <div className="flex-1">
                     <h4 className="text-lg font-bold text-green-400 mb-2">Fakt:</h4>
                     <p className="text-green-200 mb-4">{item.fact}</p>
@@ -264,7 +265,9 @@ export default function GlobalPerspectiveSection() {
             </div>
 
             <div className="bg-gradient-to-r from-purple-500/20 to-pink-500/20 backdrop-blur-sm rounded-xl p-6 border border-purple-400/30">
-              <div className="text-4xl mb-4 text-center">🤖</div>
+              <div className="mb-4 text-center">
+                <Bot size={48} className="text-purple-400 mx-auto" />
+              </div>
               <h4 className="text-xl font-bold text-white mb-4">KI & Automatisierung</h4>
               <p className="text-purple-200 text-sm mb-4">
                 Künstliche Intelligenz könnte Produktionskosten senken
@@ -281,8 +284,9 @@ export default function GlobalPerspectiveSection() {
         {/* Bottom Summary */}
         <div className="mt-16 bg-gradient-to-r from-purple-500/20 to-pink-500/20 backdrop-blur-sm rounded-2xl p-8 border border-purple-400/30">
           <div className="text-center">
-            <h3 className="text-2xl font-bold text-white mb-4">
-              🌟 Globale Lehren
+            <h3 className="text-2xl font-bold text-white mb-4 flex items-center justify-center gap-3">
+              <Star size={28} className="text-yellow-400" />
+              Globale Lehren
             </h3>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               <div>

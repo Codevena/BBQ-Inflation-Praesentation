@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import { gsap } from 'gsap';
-import { ShoppingCart, DollarSign, Target, BarChart3, Lightbulb } from 'lucide-react';
+import { ShoppingCart, DollarSign, Target, BarChart3, Lightbulb, Clock, Calendar, Rocket } from 'lucide-react';
 
 // Historische Inflationsdaten (vereinfacht)
 const historicalInflation = {
@@ -87,8 +87,9 @@ export default function TimeTravelSimulator() {
   return (
     <div className="bg-gradient-to-br from-purple-900/20 to-blue-900/20 backdrop-blur-sm rounded-2xl p-8 border border-purple-400/30">
       <div className="text-center mb-8">
-        <h3 className="text-3xl font-bold text-white mb-4">
-          🕰️ Inflation-Zeitreise-Simulator
+        <h3 className="text-3xl font-bold text-white mb-4 flex items-center justify-center gap-3">
+          <Clock size={32} className="text-purple-400" />
+          Inflation-Zeitreise-Simulator
         </h3>
         <p className="text-purple-200">
           Reise in die Vergangenheit und entdecke, was dein Geld heute wert wäre!
@@ -98,8 +99,9 @@ export default function TimeTravelSimulator() {
       {/* Input Controls */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
         <div>
-          <label className="block text-white font-semibold mb-3">
-            📅 Wähle ein Jahr:
+          <label className="block text-white font-semibold mb-3 flex items-center gap-2">
+            <Calendar size={20} className="text-purple-400" />
+            Wähle ein Jahr:
           </label>
           <select
             value={selectedYear}
@@ -149,7 +151,10 @@ export default function TimeTravelSimulator() {
               Zeitreise läuft...
             </div>
           ) : (
-            '🚀 Zeitreise starten!'
+            <>
+              <Rocket size={20} className="mr-2" />
+              Zeitreise starten!
+            </>
           )}
         </button>
       </div>

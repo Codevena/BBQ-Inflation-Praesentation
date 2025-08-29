@@ -3,7 +3,7 @@
 import { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { BarChart3, ShoppingCart, Target, TrendingUp, Lightbulb, Flag } from 'lucide-react';
+import { BarChart3, ShoppingCart, Target, TrendingUp, Lightbulb, Flag, Building2 } from 'lucide-react';
 import { inflationByCategory } from '@/data/inflationData';
 
 if (typeof window !== 'undefined') {
@@ -137,8 +137,9 @@ export default function MeasurementSection() {
 
           {/* Right Column - Categories */}
           <div ref={categoriesRef} className="space-y-6">
-            <h3 className="text-2xl font-bold text-white mb-6">
-              📈 Inflation nach Kategorien (Deutschland)
+            <h3 className="text-2xl font-bold text-white mb-6 flex items-center gap-3">
+              <TrendingUp size={28} className="text-cyan-400" />
+              Inflation nach Kategorien (Deutschland)
             </h3>
             
             {inflationByCategory.map((category, index) => (
@@ -210,7 +211,7 @@ export default function MeasurementSection() {
                 <p className="text-cyan-200 text-sm">Koordiniert den HVPI für die EU</p>
               </div>
               <div className="text-center">
-                <div className="text-4xl mb-2">🏦</div>
+                <Building2 size={48} className="text-blue-400 mx-auto mb-2" />
                 <h4 className="font-semibold text-white mb-2">EZB</h4>
                 <p className="text-cyan-200 text-sm">Nutzt HVPI für Geldpolitik</p>
               </div>

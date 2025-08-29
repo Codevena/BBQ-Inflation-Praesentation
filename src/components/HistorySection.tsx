@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { AlertTriangle } from 'lucide-react';
 import { historicalEvents } from '@/data/inflationData';
 
 if (typeof window !== 'undefined') {
@@ -222,8 +223,9 @@ export default function HistorySection() {
         {/* Summary Box */}
         <div className="mt-16 bg-gradient-to-r from-red-500/20 to-yellow-500/20 backdrop-blur-sm rounded-2xl p-8 border border-red-500/30">
           <div className="text-center">
-            <h3 className="text-2xl font-bold text-white mb-4">
-              🚨 Lehren aus der Geschichte
+            <h3 className="text-2xl font-bold text-white mb-4 flex items-center justify-center gap-3">
+              <AlertTriangle size={28} className="text-red-400" />
+              Lehren aus der Geschichte
             </h3>
             <p className="text-purple-200 leading-relaxed max-w-4xl mx-auto">
               Hyperinflation entsteht meist durch politische Instabilität, Kriege oder extreme Geldpolitik. 

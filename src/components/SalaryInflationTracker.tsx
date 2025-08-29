@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import { gsap } from 'gsap';
-import { DollarSign, BarChart3, TrendingUp, TrendingDown, Target, Lightbulb, Banknote } from 'lucide-react';
+import { DollarSign, BarChart3, TrendingUp, TrendingDown, Target, Lightbulb, Banknote, Calendar, Briefcase } from 'lucide-react';
 
 // Reale Inflationsdaten Deutschland
 const inflationData = {
@@ -106,8 +106,9 @@ export default function SalaryInflationTracker() {
       {/* Input Controls */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
         <div>
-          <label className="block text-white font-semibold mb-3">
-            📅 Dein Gehalt 2020 (brutto/Jahr):
+          <label className="block text-white font-semibold mb-3 flex items-center gap-2">
+            <Calendar size={20} className="text-green-400" />
+            Dein Gehalt 2020 (brutto/Jahr):
           </label>
           <div className="relative">
             <input
@@ -128,8 +129,9 @@ export default function SalaryInflationTracker() {
         </div>
 
         <div>
-          <label className="block text-white font-semibold mb-3">
-            💼 Dein aktuelles Gehalt (brutto/Jahr):
+          <label className="block text-white font-semibold mb-3 flex items-center gap-2">
+            <Briefcase size={20} className="text-blue-400" />
+            Dein aktuelles Gehalt (brutto/Jahr):
           </label>
           <div className="relative">
             <input
@@ -227,7 +229,10 @@ export default function SalaryInflationTracker() {
             
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div>
-                <h6 className="text-lg font-semibold text-white mb-3">💰 Gehaltsentwicklung:</h6>
+                <h6 className="text-lg font-semibold text-white mb-3 flex items-center gap-2">
+                  <DollarSign size={20} className="text-green-400" />
+                  Gehaltsentwicklung:
+                </h6>
                 <div className="space-y-2 text-sm">
                   <div className="flex justify-between">
                     <span className="text-gray-300">2020 (Start):</span>
@@ -251,7 +256,10 @@ export default function SalaryInflationTracker() {
               </div>
 
               <div>
-                <h6 className="text-lg font-semibold text-white mb-3">📈 Inflation 2020-2024:</h6>
+                <h6 className="text-lg font-semibold text-white mb-3 flex items-center gap-2">
+                  <TrendingUp size={20} className="text-red-400" />
+                  Inflation 2020-2024:
+                </h6>
                 <div className="space-y-2 text-sm">
                   {Object.entries(inflationData).map(([year, rate]) => (
                     <div key={year} className="flex justify-between">
@@ -292,7 +300,10 @@ export default function SalaryInflationTracker() {
 
             {/* Handlungsempfehlung */}
             <div className="mt-4 bg-purple-500/10 rounded-lg p-4">
-              <h6 className="text-lg font-bold text-white mb-2">💡 Empfehlung:</h6>
+              <h6 className="text-lg font-bold text-white mb-2 flex items-center gap-2">
+                <Lightbulb size={20} className="text-yellow-400" />
+                Empfehlung:
+              </h6>
               <p className="text-purple-200 text-sm">
                 {result.isWinner ? (
                   'Investiere dein zusätzliches Einkommen in inflationsgeschützte Anlagen wie Aktien oder Immobilien!'
