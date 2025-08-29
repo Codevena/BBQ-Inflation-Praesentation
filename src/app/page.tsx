@@ -30,6 +30,16 @@ export default function Home() {
 
   return (
     <main className="relative">
+      {/* Presentation Button */}
+      <div className="fixed top-4 left-4 z-50">
+        <a
+          href="/presentation"
+          className="bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-700 hover:to-cyan-700 text-white px-6 py-3 rounded-lg font-semibold shadow-lg backdrop-blur-sm border border-white/20 transition-all duration-300 hover:scale-105 flex items-center gap-2"
+        >
+          📊 Zur Präsentation
+        </a>
+      </div>
+
       {/* Navigation */}
       <Navigation
         currentSection={currentSection}
@@ -48,6 +58,13 @@ export default function Home() {
       <HistorySection />
       <GlossarySection />
       <QuizSection />
+
+      {/* Copyright */}
+      <div className="fixed bottom-4 left-4 bg-black/50 backdrop-blur-sm rounded-lg p-3 text-sm z-50">
+        <div className="text-white/80">
+          © 2024 Markus Wiesecke
+        </div>
+      </div>
 
       {/* Keyboard Instructions */}
       <div className="fixed bottom-4 right-4 bg-black/50 backdrop-blur-sm rounded-lg p-3 text-sm z-50">

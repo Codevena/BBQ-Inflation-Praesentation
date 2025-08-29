@@ -211,6 +211,21 @@ export default function ECBPolicySection() {
           </p>
         </div>
 
+        {/* EZB Rate History Chart */}
+        <div ref={chartRef} className="mb-16">
+          <div className="bg-white/5 backdrop-blur-sm rounded-2xl p-8 border border-white/10">
+            <h3 className="text-2xl font-bold text-white mb-6 text-center">
+              📈 EZB-Leitzins 2019-2024
+            </h3>
+            <div className="h-80">
+              <Line data={chartData} options={chartOptions} />
+            </div>
+            <p className="text-center text-blue-200 mt-4">
+              Von Nullzinspolitik zur Inflationsbekämpfung
+            </p>
+          </div>
+        </div>
+
         {/* Interactive Rate Simulator */}
         <div ref={simulatorRef} className="mb-16">
           <div className="bg-white/5 backdrop-blur-sm rounded-2xl p-8 border border-white/10">
@@ -218,7 +233,7 @@ export default function ECBPolicySection() {
               🎯 Leitzins-Simulator
             </h3>
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-              
+
               {/* Slider Control */}
               <div className="space-y-6">
                 <div className="text-center">
@@ -227,7 +242,7 @@ export default function ECBPolicySection() {
                   </div>
                   <div className="text-blue-200 mb-4">EZB Leitzins</div>
                 </div>
-                
+
                 <input
                   type="range"
                   min="0"
@@ -240,7 +255,7 @@ export default function ECBPolicySection() {
                   }}
                   className="w-full h-3 bg-gradient-to-r from-green-500 via-yellow-500 to-red-500 rounded-lg appearance-none cursor-pointer"
                 />
-                
+
                 <div className="flex justify-between text-sm text-blue-200">
                   <span>0% (Nullzins)</span>
                   <span>2,5% (Normal)</span>
@@ -251,7 +266,7 @@ export default function ECBPolicySection() {
               {/* Impact Display */}
               <div className="space-y-4">
                 <h4 className="text-xl font-bold text-white mb-4">Auswirkungen:</h4>
-                
+
                 <div className="space-y-3">
                   <div className="flex items-center justify-between p-3 bg-white/5 rounded-lg">
                     <span className="text-blue-200">Kreditzinsen</span>
@@ -259,14 +274,14 @@ export default function ECBPolicySection() {
                       {(selectedRate + 1.5).toFixed(1)}%
                     </span>
                   </div>
-                  
+
                   <div className="flex items-center justify-between p-3 bg-white/5 rounded-lg">
                     <span className="text-blue-200">Sparzinsen</span>
                     <span className={`font-bold ${getImpactColor(selectedRate)}`}>
                       {(selectedRate * 0.8).toFixed(1)}%
                     </span>
                   </div>
-                  
+
                   <div className="flex items-center justify-between p-3 bg-white/5 rounded-lg">
                     <span className="text-blue-200">Wirtschaftsimpuls</span>
                     <span className={`font-bold ${selectedRate <= 2 ? 'text-green-400' : 'text-red-400'}`}>
@@ -284,21 +299,6 @@ export default function ECBPolicySection() {
                 )}
               </div>
             </div>
-          </div>
-        </div>
-
-        {/* EZB Rate History Chart */}
-        <div ref={chartRef} className="mb-16">
-          <div className="bg-white/5 backdrop-blur-sm rounded-2xl p-8 border border-white/10">
-            <h3 className="text-2xl font-bold text-white mb-6 text-center">
-              📈 EZB-Leitzins 2019-2024
-            </h3>
-            <div className="h-80">
-              <Line data={chartData} options={chartOptions} />
-            </div>
-            <p className="text-center text-blue-200 mt-4">
-              Von Nullzinspolitik zur Inflationsbekämpfung
-            </p>
           </div>
         </div>
 

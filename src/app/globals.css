@@ -130,9 +130,9 @@
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
 }
 
-/* Smooth Scrolling */
+/* Smooth Scrolling - disabled to avoid conflict with Lenis */
 html {
-  scroll-behavior: smooth;
+  scroll-behavior: auto;
 }
 
 /* Custom Scrollbar */

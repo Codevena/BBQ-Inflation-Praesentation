@@ -7,7 +7,7 @@ export const useLenis = () => {
 
   useEffect(() => {
     const lenis = new Lenis({
-      duration: 1.2,
+      duration: 0.6,  // Reduziert von 1.2 für direkteres Gefühl
       easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
       smooth: true,
     });
