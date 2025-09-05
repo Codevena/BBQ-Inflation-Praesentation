@@ -188,7 +188,7 @@ Basierend auf der umfassenden PDF-Analyse wurde festgestellt, dass die Lernplatt
 - ✅ Notwendigkeit des Wirtschaftens (`economic-fundamentals`)
 - ✅ Knappheit von Gütern und Ressourcen (`scarcity-and-needs`)
 - ✅ Bedürfnisse, Bedarf & Nachfrage (`need-satisfaction`)
-- ✅ Maslow-Pyramide mit Diagrammen (`maslow-pyramid-extended`)
+- ✅ Maslow-Pyramide mit Diagrammen (`maslow-pyramide`)
 - ✅ Bedürfnis–Bedarf–Nachfrage–Erwerb Regelkreis (`economic-cycle`)
 - ✅ Alle Güterarten implementiert (`good-types`, `extended-good-types`, `extended-good-classifications`)
 - ✅ Komplementär- und Substitutionsgüter (`good-relationships`)
